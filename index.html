@@ -4,11 +4,86 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Build an Event Flyer Page</title>
+    <meta name="theme-color" content="#0e1714">
+    <meta name="description" content="Maple Row Street Fair — one block of food, live music, and makers on Saturday, October 24.">
+    <title>Maple Row Street Fair — Event Flyer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=DM+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
+    <header class="flyer-header">
+        <img class="flyer-photo" src="https://cdn.freecodecamp.org/curriculum/labs/event.jpg"
+            alt="Red, green, yellow, and blue bunting flags strung above a sunlit street">
+        <h1><span class="title-line">Maple Row</span> <em>Street Fair</em></h1>
+    </header>
 
+    <main>
+        <p class="dateline">
+            <span>Sat · Oct 24</span>
+            <span>11am — 8pm</span>
+            <span>Maple Row, 3rd to 6th</span>
+        </p>
+
+        <p class="lede">One block, fifty-eight tables, and the whole neighborhood on its feet. Come hungry, leave with
+            a tote full of things you did not know you needed.</p>
+
+        <hr>
+
+        <section class="feature">
+            <p class="feature-label">01 <span>Eat</span></p>
+            <h2>Eat your way down the block</h2>
+            <p class="feature-copy">Twelve kitchens, one street, zero reservations. Everything is cooked in front
+                of you, and the line moves faster than it looks.</p>
+            <ul class="menu">
+                <li><strong>Smoke &amp; Pickle</strong> — brisket on rye, half-sour pickles</li>
+                <li><strong>Nnamdi's Grill</strong> — suya skewers, charred onion</li>
+                <li><strong>Little Oven</strong> — cardamom buns, still warm</li>
+                <li><strong>The Corn Cart</strong> — esquites with lime and chili salt</li>
+            </ul>
+        </section>
+
+        <section class="feature">
+            <p class="feature-label">02 <span>Listen</span></p>
+            <h2>Two stages, no headliner</h2>
+            <p class="feature-copy">Every act lives within six blocks of the fair. Free, all ages, and loud enough
+                to hear from the pickle table.</p>
+            <ul class="lineup">
+                <li><span class="act-time">11:30</span><span class="act-name">Maple Row Recorder Club</span></li>
+                <li><span class="act-time">1:00</span><span class="act-name">Sadie &amp; the Sidewalks</span></li>
+                <li><span class="act-time">3:00</span><span class="act-name">DJ Marisol<span class="act-note">, all-ages
+                            dance</span></span></li>
+                <li><span class="act-time">5:30</span><span class="act-name">The 6th Street Brass</span></li>
+            </ul>
+        </section>
+
+        <section class="feature">
+            <p class="feature-label">03 <span>Make</span></p>
+            <h2>Makers, menders &amp; oddities</h2>
+            <p class="feature-copy">Fifty-eight tables of things made by hand and things worth fixing. Cash and
+                cards both welcome, haggling optional.</p>
+            <ul class="menu">
+                <li><strong>Mender's Row</strong> — knife sharpening, zipper rescue, bike tune-ups</li>
+                <li><strong>Handmade</strong> — ceramics, indigo dye, letterpress cards</li>
+                <li><strong>Kids' table</strong> — clay monsters, face paint, one very slow piñata</li>
+            </ul>
+        </section>
+
+        <hr>
+    </main>
+
+    <footer class="flyer-footer">
+        <p class="footer-cta">Bring a tote.<br>Bring a friend.</p>
+        <p class="footer-meta">
+            Free entry · Rain or shine · Step-free from 3rd to 6th<br>
+            Maple Row Block Association ·
+            <a href="mailto:hello@maplerowfair.org">hello@maplerowfair.org</a>
+        </p>
+    </footer>
 </body>
 
 </html>

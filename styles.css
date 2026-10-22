@@ -1,0 +1,524 @@
+/* ============================================================
+   Maple Row Street Fair — a small-press poster for a one-day block party
+   Palette: pine ink · newsprint paper · bunting tomato, gold, teal, blue
+   Type: Bricolage Grotesque (poster), Instrument Serif (voice), DM Mono (details)
+   ============================================================ */
+
+:root {
+  --paper: #f7edda;
+  --paper-shade: #efe1c8;
+  --ink: #16241e;
+  --ink-soft: #4c554b;
+  --tomato: #d3502f;
+  --tomato-deep: #ad3b1f;
+  --gold: #e3a72f;
+  --teal: #2f6b5c;
+  --blue: #3d6b8c;
+  --rule: rgba(22, 36, 30, 0.2);
+  --display: "Bricolage Grotesque", "Trebuchet MS", "Helvetica Neue", sans-serif;
+  --serif: "Instrument Serif", Georgia, "Times New Roman", serif;
+  --mono: "DM Mono", "Courier New", monospace;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* ---------- The wall behind the poster ---------- */
+
+html {
+  background-color: #0e1714;
+  background-image:
+    radial-gradient(70rem 42rem at 50% -12%, rgba(211, 80, 47, 0.16), transparent 62%),
+    radial-gradient(58rem 40rem at 50% 118%, rgba(47, 107, 92, 0.24), transparent 60%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+  background-attachment: fixed;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ---------- The printed sheet ---------- */
+
+body {
+  position: relative;
+  width: 92vw;
+  max-width: 1000px;
+  min-height: calc(100vh - 100px);
+  margin: 0 auto;
+  padding: 50px 0;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  font-family: var(--display);
+  font-optical-sizing: auto;
+  color: var(--ink);
+  background-color: var(--paper);
+  background-image:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.45), rgba(239, 225, 200, 0) 42%),
+    radial-gradient(50rem 26rem at 108% -6%, rgba(227, 167, 47, 0.18), transparent 62%),
+    radial-gradient(42rem 24rem at -10% 104%, rgba(47, 107, 92, 0.12), transparent 60%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)' opacity='0.045'/%3E%3C/svg%3E");
+  box-shadow:
+    0 2px 3px rgba(0, 0, 0, 0.4),
+    0 34px 80px -26px rgba(0, 0, 0, 0.75),
+    0 90px 160px -60px rgba(0, 0, 0, 0.8);
+}
+
+/* Bunting ribbon along the top edge of the sheet */
+
+body::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 8px;
+  background-image: repeating-linear-gradient(90deg,
+      var(--tomato) 0 25%,
+      var(--gold) 25% 50%,
+      var(--teal) 50% 75%,
+      var(--blue) 75% 100%);
+  background-size: 144px 100%;
+}
+
+::selection {
+  background-color: var(--tomato);
+  color: var(--paper);
+}
+
+/* ---------- Header: a pasted print and a painted title ---------- */
+
+.flyer-header {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.6fr);
+  align-items: start;
+  gap: 0.5rem 2.25rem;
+  width: 88%;
+  margin: 0 auto;
+  padding-top: 1rem;
+}
+
+.flyer-photo {
+  grid-column: 2;
+  grid-row: 1;
+  display: block;
+  width: 100%;
+  aspect-ratio: 286 / 176;
+  object-fit: cover;
+  border: 3px solid var(--ink);
+  background-color: var(--paper-shade);
+  box-shadow: 12px 12px 0 var(--tomato);
+  filter: saturate(1.06) contrast(1.03);
+  transform: rotate(1.6deg);
+  transition: transform 0.6s cubic-bezier(0.22, 0.61, 0.21, 1), filter 0.6s ease;
+  animation: photo-in 1s cubic-bezier(0.22, 0.61, 0.21, 1) 0.1s backwards;
+}
+
+.flyer-header:hover .flyer-photo {
+  transform: rotate(0deg) translateY(-3px);
+  filter: saturate(1.16) contrast(1.04);
+}
+
+/* Round stamp pressed over the photo corner */
+
+.flyer-header::after {
+  content: "One day\A only";
+  white-space: pre;
+  position: absolute;
+  top: -0.6rem;
+  right: -1.3rem;
+  display: grid;
+  place-items: center;
+  width: 5.4rem;
+  height: 5.4rem;
+  border: 1.5px dashed var(--tomato-deep);
+  border-radius: 50%;
+  background-color: rgba(247, 237, 218, 0.92);
+  color: var(--tomato-deep);
+  font-family: var(--mono);
+  font-size: 0.58rem;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: 0.16em;
+  text-align: center;
+  text-transform: uppercase;
+  transform: rotate(-9deg);
+  box-shadow: 0 8px 16px rgba(22, 36, 30, 0.16);
+}
+
+h1 {
+  grid-column: 1;
+  grid-row: 1;
+  margin: 0.35rem 0 0;
+  font-family: var(--display);
+  font-size: clamp(2.7rem, 8.4vw, 5.25rem);
+  font-weight: 800;
+  line-height: 0.84;
+  letter-spacing: -0.045em;
+  text-transform: uppercase;
+  color: var(--ink);
+  animation: rise 0.9s cubic-bezier(0.22, 0.61, 0.21, 1) 0.05s backwards;
+}
+
+.title-line {
+  display: block;
+}
+
+h1 em {
+  display: block;
+  margin-top: 0.1em;
+  padding-left: 0.04em;
+  font-family: var(--serif);
+  font-size: 1.2em;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  text-transform: none;
+  color: var(--tomato);
+}
+
+/* ---------- Dateline strip ---------- */
+
+.dateline {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem 1.75rem;
+  width: 88%;
+  margin: 2.75rem auto 0;
+  padding: 0.85rem 0 0.9rem;
+  border-top: 2px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+  font-family: var(--mono);
+  font-size: clamp(0.62rem, 1.15vw, 0.74rem);
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink);
+  animation: rise 0.8s cubic-bezier(0.22, 0.61, 0.21, 1) 0.3s backwards;
+}
+
+.dateline span:first-child {
+  color: var(--tomato-deep);
+}
+
+/* ---------- Opening line ---------- */
+
+.lede {
+  width: 88%;
+  max-width: 58ch;
+  margin: 1.9rem auto 3rem 6%;
+  font-family: var(--serif);
+  font-size: clamp(1.3rem, 2.6vw, 1.7rem);
+  line-height: 1.32;
+  letter-spacing: -0.005em;
+  color: var(--ink);
+  text-wrap: pretty;
+  animation: rise 0.8s cubic-bezier(0.22, 0.61, 0.21, 1) 0.4s backwards;
+}
+
+/* ---------- Dotted rule ---------- */
+
+hr {
+  width: 72%;
+  height: 12px;
+  margin: 0 auto 2.6rem;
+  border: 0;
+  background-image:
+    radial-gradient(circle, var(--tomato) 2.3px, transparent 2.5px),
+    linear-gradient(90deg, transparent, var(--rule) 16%, var(--rule) 84%, transparent);
+  background-repeat: repeat-x, no-repeat;
+  background-position: center center, center center;
+  background-size: 14px 12px, 100% 1px;
+}
+
+/* ---------- Programme ---------- */
+
+section {
+  width: 88%;
+  margin: 0 auto;
+}
+
+.feature {
+  display: grid;
+  grid-template-columns: 7.25rem minmax(0, 1fr);
+  column-gap: 2.25rem;
+  padding: 1.5rem 0 2.4rem;
+  border-top: 2px solid var(--ink);
+  animation: rise 0.8s cubic-bezier(0.22, 0.61, 0.21, 1) backwards;
+}
+
+.feature:nth-of-type(1) {
+  animation-delay: 0.5s;
+}
+
+.feature:nth-of-type(2) {
+  animation-delay: 0.62s;
+}
+
+.feature:nth-of-type(3) {
+  animation-delay: 0.74s;
+}
+
+.feature-label {
+  grid-column: 1;
+  grid-row: 1;
+  margin: 0.35rem 0 0;
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--tomato);
+}
+
+.feature-label span {
+  display: block;
+  margin-top: 0.45rem;
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  color: var(--ink);
+}
+
+.feature h2 {
+  grid-column: 2;
+  margin: 0 0 0.65rem;
+  font-family: var(--serif);
+  font-size: clamp(1.7rem, 3.8vw, 2.45rem);
+  font-weight: 400;
+  line-height: 1.02;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  text-wrap: balance;
+}
+
+.feature-copy {
+  grid-column: 2;
+  margin: 0;
+  max-width: 52ch;
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--ink-soft);
+  text-wrap: pretty;
+}
+
+.menu,
+.lineup {
+  grid-column: 2;
+  margin: 1.35rem 0 0;
+  padding: 0;
+  max-width: 50ch;
+  list-style: none;
+}
+
+.menu li,
+.lineup li {
+  padding: 0.55rem 0;
+  border-bottom: 1px dashed var(--rule);
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+
+.menu li:first-child,
+.lineup li:first-child {
+  border-top: 1px dashed var(--rule);
+}
+
+.menu strong,
+.lineup strong {
+  font-family: var(--display);
+  font-weight: 600;
+  color: var(--ink);
+  transition: color 0.25s ease;
+}
+
+.menu li:hover strong,
+.lineup li:hover strong {
+  color: var(--tomato-deep);
+}
+
+.lineup li {
+  display: grid;
+  grid-template-columns: 3.75rem minmax(0, 1fr);
+  align-items: baseline;
+  gap: 0.85rem;
+}
+
+.act-time {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: var(--tomato-deep);
+}
+
+.act-name {
+  font-weight: 600;
+  color: var(--ink);
+  transition: color 0.25s ease;
+}
+
+.act-note {
+  font-weight: 400;
+  color: var(--ink-soft);
+}
+
+.lineup li:hover .act-name {
+  color: var(--tomato-deep);
+}
+
+/* ---------- Footer ---------- */
+
+.flyer-footer {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 1.25rem 2rem;
+  width: 88%;
+  margin: auto auto 0;
+  padding: 2rem 0 0;
+  border-top: 2px solid var(--ink);
+  animation: rise 0.8s cubic-bezier(0.22, 0.61, 0.21, 1) 0.85s backwards;
+}
+
+.footer-cta {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: clamp(1.9rem, 4.6vw, 3rem);
+  line-height: 0.98;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+}
+
+.footer-meta {
+  margin: 0;
+  font-family: var(--mono);
+  font-size: 0.64rem;
+  line-height: 1.9;
+  letter-spacing: 0.09em;
+  text-align: right;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.flyer-footer a {
+  color: var(--tomato-deep);
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+  transition: color 0.25s ease;
+}
+
+.flyer-footer a:hover {
+  color: var(--tomato);
+}
+
+.flyer-footer a:focus-visible {
+  outline: 2px solid var(--tomato-deep);
+  outline-offset: 3px;
+}
+
+/* ---------- Motion ---------- */
+
+@keyframes photo-in {
+  from {
+    opacity: 0;
+    transform: rotate(-2.5deg) translateY(16px);
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}
+
+/* ---------- Narrow screens ---------- */
+
+@media (max-width: 760px) {
+  .flyer-header {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.6rem;
+  }
+
+  .flyer-photo {
+    grid-column: 1;
+    grid-row: 1;
+    box-shadow: 8px 8px 0 var(--tomato);
+  }
+
+  h1 {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .flyer-header::after {
+    top: -1.4rem;
+    right: -0.35rem;
+    width: 4.6rem;
+    height: 4.6rem;
+    font-size: 0.52rem;
+  }
+
+  .dateline {
+    justify-content: flex-start;
+    gap: 0.35rem 1.1rem;
+  }
+
+  .feature {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 0.7rem;
+    padding-bottom: 2rem;
+  }
+
+  .feature-label {
+    grid-row: auto;
+    display: flex;
+    gap: 0.6rem;
+    align-items: baseline;
+    margin-top: 0;
+  }
+
+  .feature-label span {
+    margin-top: 0;
+  }
+
+  .feature h2,
+  .feature-copy,
+  .menu,
+  .lineup {
+    grid-column: 1;
+  }
+
+  .lineup li {
+    grid-template-columns: 3.25rem minmax(0, 1fr);
+    gap: 0.7rem;
+  }
+
+  .flyer-footer {
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: start;
+  }
+
+  .footer-meta {
+    text-align: left;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flyer-photo,
+  h1,
+  .dateline,
+  .lede,
+  .feature,
+  .flyer-footer {
+    animation: none;
+    transition: none;
+  }
+}
+
